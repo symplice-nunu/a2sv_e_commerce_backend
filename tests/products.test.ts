@@ -54,11 +54,12 @@ describe("Product Routes", () => {
     const response = await request(app).get("/products?page=1&pageSize=10");
 
     expect(response.status).toBe(200);
-    expect(response.body.object).toHaveLength(1);
-    expect(response.body.object[0]).toMatchObject({
+    expect(response.body.object.products).toHaveLength(1);
+    expect(response.body.object.products[0]).toMatchObject({
       id: productId,
       price: 10.5,
     });
+    expect(response.body.object.totalProducts).toBe(1);
   });
 
   it("retrieves product details", async () => {

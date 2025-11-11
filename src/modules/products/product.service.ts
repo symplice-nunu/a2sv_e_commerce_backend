@@ -112,15 +112,17 @@ export const listProducts = async (page: number, pageSize: number, search?: stri
 
   if (trimmedSearch && trimmedSearch.length > 0) {
     const isSQLite = env.databaseUrl.startsWith("file:");
+
+    const nameFilter = isSQLite
+      ? { contains: trimmedSearch }
+      : ({
+          contains: trimmedSearch,
+          // `mode` is unsupported for SQLite, but allowed for other providers.
+          mode: "insensitive",
+        } as unknown as Prisma.StringFilter<"Product">);
+
     where = {
-      name: isSQLite
-        ? {
-            contains: trimmedSearch,
-          }
-        : {
-            contains: trimmedSearch,
-            mode: "insensitive",
-          },
+      name: nameFilter,
     };
   }
 
