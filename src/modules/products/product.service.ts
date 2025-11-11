@@ -97,12 +97,9 @@ export const getProductById = async (productId: string) => {
   return mapProduct(product);
 };
 
-export const listProducts = async (
-  page: number,
-  pageSize: number,
-  search?: string,
-) => {
-  const cacheKey = buildCacheKey(page, pageSize, search);
+export const listProducts = async (page: number, pageSize: number, search?: string) => {
+  const trimmedSearch = search?.trim();
+  const cacheKey = buildCacheKey(page, pageSize, trimmedSearch);
   const cached = productCache.get<{
     items: ReturnType<typeof mapProduct>[];
     total: number;
@@ -111,13 +108,21 @@ export const listProducts = async (
     return cached;
   }
 
-  const where: Prisma.ProductWhereInput = search
-    ? {
-        name: {
-          contains: search,
-        },
-      }
-    : {};
+  let where: Prisma.ProductWhereInput = {};
+
+  if (trimmedSearch && trimmedSearch.length > 0) {
+    const isSQLite = env.databaseUrl.startsWith("file:");
+    where = {
+      name: isSQLite
+        ? {
+            contains: trimmedSearch,
+          }
+        : {
+            contains: trimmedSearch,
+            mode: "insensitive",
+          },
+    };
+  }
 
   const [items, total] = await Promise.all([
     prisma.product.findMany({

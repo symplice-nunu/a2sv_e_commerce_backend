@@ -48,7 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.OrderItemOrderByRelevanceFieldEnum = exports.OrderOrderByRelevanceFieldEnum = exports.NullsOrder = exports.ProductOrderByRelevanceFieldEnum = exports.UserOrderByRelevanceFieldEnum = exports.SortOrder = exports.OrderItemScalarFieldEnum = exports.OrderScalarFieldEnum = exports.ProductScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
+exports.NullsOrder = exports.SortOrder = exports.OrderItemScalarFieldEnum = exports.OrderScalarFieldEnum = exports.ProductScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/index-browser"));
 exports.Decimal = runtime.Decimal;
 exports.NullTypes = {
@@ -84,9 +84,6 @@ exports.ModelName = {
  * Enums
  */
 exports.TransactionIsolationLevel = runtime.makeStrictEnum({
-    ReadUncommitted: 'ReadUncommitted',
-    ReadCommitted: 'ReadCommitted',
-    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
 });
 exports.UserScalarFieldEnum = {
@@ -129,32 +126,8 @@ exports.SortOrder = {
     asc: 'asc',
     desc: 'desc'
 };
-exports.UserOrderByRelevanceFieldEnum = {
-    id: 'id',
-    username: 'username',
-    email: 'email',
-    password: 'password'
-};
-exports.ProductOrderByRelevanceFieldEnum = {
-    id: 'id',
-    name: 'name',
-    description: 'description',
-    category: 'category',
-    userId: 'userId'
-};
 exports.NullsOrder = {
     first: 'first',
     last: 'last'
-};
-exports.OrderOrderByRelevanceFieldEnum = {
-    id: 'id',
-    userId: 'userId',
-    description: 'description',
-    status: 'status'
-};
-exports.OrderItemOrderByRelevanceFieldEnum = {
-    id: 'id',
-    orderId: 'orderId',
-    productId: 'productId'
 };
 //# sourceMappingURL=prismaNamespaceBrowser.js.map

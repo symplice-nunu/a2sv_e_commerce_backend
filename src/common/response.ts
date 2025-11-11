@@ -7,16 +7,6 @@ type BaseResponse<T> = {
   errors: string[] | null;
 };
 
-type PaginatedResponse<T> = {
-  success: boolean;
-  message: string;
-  object: T[];
-  pageNumber: number;
-  pageSize: number;
-  totalSize: number;
-  errors: string[] | null;
-};
-
 export const sendResponse = <T>(
   res: Response,
   statusCode: number,
@@ -44,13 +34,18 @@ export const sendPaginatedResponse = <T>(
   totalSize: number,
   errors: string[] | null = null,
 ) => {
-  const payload: PaginatedResponse<T> = {
+  const totalPages = Math.ceil(totalSize / pageSize);
+
+  const payload = {
     success: statusCode >= 200 && statusCode < 400,
     message,
-    object: data,
-    pageNumber,
-    pageSize,
-    totalSize,
+    object: {
+      currentPage: pageNumber,
+      pageSize,
+      totalPages,
+      totalProducts: totalSize,
+      products: data,
+    },
     errors,
   };
 

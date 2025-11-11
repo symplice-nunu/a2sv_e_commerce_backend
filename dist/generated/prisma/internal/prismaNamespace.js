@@ -48,7 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defineExtension = exports.OrderItemOrderByRelevanceFieldEnum = exports.OrderOrderByRelevanceFieldEnum = exports.NullsOrder = exports.ProductOrderByRelevanceFieldEnum = exports.UserOrderByRelevanceFieldEnum = exports.SortOrder = exports.OrderItemScalarFieldEnum = exports.OrderScalarFieldEnum = exports.ProductScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.NullsOrder = exports.SortOrder = exports.OrderItemScalarFieldEnum = exports.OrderScalarFieldEnum = exports.ProductScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/library"));
 /**
  * Prisma Errors
@@ -112,9 +112,6 @@ exports.ModelName = {
  * Enums
  */
 exports.TransactionIsolationLevel = runtime.makeStrictEnum({
-    ReadUncommitted: 'ReadUncommitted',
-    ReadCommitted: 'ReadCommitted',
-    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
 });
 exports.UserScalarFieldEnum = {
@@ -157,33 +154,9 @@ exports.SortOrder = {
     asc: 'asc',
     desc: 'desc'
 };
-exports.UserOrderByRelevanceFieldEnum = {
-    id: 'id',
-    username: 'username',
-    email: 'email',
-    password: 'password'
-};
-exports.ProductOrderByRelevanceFieldEnum = {
-    id: 'id',
-    name: 'name',
-    description: 'description',
-    category: 'category',
-    userId: 'userId'
-};
 exports.NullsOrder = {
     first: 'first',
     last: 'last'
-};
-exports.OrderOrderByRelevanceFieldEnum = {
-    id: 'id',
-    userId: 'userId',
-    description: 'description',
-    status: 'status'
-};
-exports.OrderItemOrderByRelevanceFieldEnum = {
-    id: 'id',
-    orderId: 'orderId',
-    productId: 'productId'
 };
 exports.defineExtension = runtime.Extensions.defineExtension;
 //# sourceMappingURL=prismaNamespace.js.map
